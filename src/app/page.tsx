@@ -12,17 +12,19 @@ export default function Home() {
   const [location, setLocation] = useState<string>("Istanbul");
 
   return (
-    <div
-      className={`flex flex-col h-screen relative items-center justify-center`}
-    >
-      <Header
-        isDark={isDark}
-        language={language}
-        setIsDark={setIsDark}
-        setLanguage={setLanguage}
-      />
-      <Main isDark={isDark} language={language} location={location} />
-      <Footer isDark={isDark} language={language} />
+    <div className={`${isDark ? "dark" : ""}`}>
+      <div
+        className={`  bg-[#EEEEEE] dark:bg-[#0C0C0C]  flex flex-col h-screen relative items-center justify-center`}
+      >
+        <Header
+          isDark={isDark}
+          language={language}
+          setIsDark={setIsDark}
+          setLanguage={setLanguage}
+        />
+        <Main isDark={isDark} language={language} location={location} />
+        <Footer isDark={isDark} language={language} />
+      </div>
     </div>
   );
 }

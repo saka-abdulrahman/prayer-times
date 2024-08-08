@@ -10,10 +10,15 @@ export default function Main({ isDark, language, location }) {
   ];
 
   return (
-    <main className="">
-      <div>
-        <h3>{location}</h3>
-        <h4>02/02/2002</h4>
+    <main className={`  flex flex-col items-center p-4     `}>
+      <div
+        className={`text-[#FFFFFF] dark:text-[#93B1A6] bg-[#088395] dark:bg-[#344955] flex 
+                    flex-col items-center m-4 p-4 min-w-96 max-w-[60rem] `}
+      >
+        <h3 className={` text-center text-8xl p-4`}>
+          {location}ffffffffffffffffffffffff
+        </h3>
+        <h4 className={` text-center text-4xl p-2`}>02/02/2002</h4>
       </div>
 
       <div className="">
