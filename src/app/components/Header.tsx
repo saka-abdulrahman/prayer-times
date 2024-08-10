@@ -1,5 +1,5 @@
-import { MdDarkMode } from "react-icons/md";
-import { MdMenu } from "react-icons/md";
+import React from "react";
+import { MdDarkMode, MdMenu } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 
@@ -7,19 +7,17 @@ type HeaderProps = {
   isDark: boolean;
   language: boolean;
   setIsDark: (isDark: boolean) => void;
-
   isMenuActive: boolean;
   setIsMenuActive: (isMenuActive: boolean) => void;
 };
 
-export default function Header({
+const Header: React.FC<HeaderProps> = ({
   isDark,
   language,
   setIsDark,
-
   isMenuActive,
   setIsMenuActive,
-}: HeaderProps) {
+}) => {
   const btnStyle: string = `bg-[#EEEEEE] dark:bg-[#31363F] text-[#222831] dark:text-[#D9D9D9] text-5xl 
                             rounded-full m-2 p-2 hover:scale-105 hover:opacity-80 transition-all max-md:text-4xl`;
 
@@ -62,4 +60,6 @@ export default function Header({
       <div></div>
     </header>
   );
-}
+};
+
+export default Header;

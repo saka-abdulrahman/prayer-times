@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 type PrayerTimes = {
   timings: {
@@ -16,22 +16,18 @@ type PrayerTimes = {
 };
 
 type MainProps = {
-  isDark: boolean;
   language: boolean;
   location: string;
-
   prayerTimes?: PrayerTimes;
   arLocation: string;
 };
 
-export default function Main({
-  isDark,
+const Main: React.FC<MainProps> = ({
   language,
   location,
-
   prayerTimes,
   arLocation,
-}: MainProps) {
+}) => {
   const timings = prayerTimes?.timings;
 
   if (!timings) {
@@ -82,28 +78,21 @@ export default function Main({
 
       <div className={gridStyle}>
         {prayers.map((prayer, index) => (
-          <Card
-            key={index}
-            language={language}
-            isDark={isDark}
-            prayer={prayer}
-          />
+          <Card key={index} prayer={prayer} />
         ))}
       </div>
     </main>
   );
-}
+};
 
 type CardProps = {
-  language: boolean;
-  isDark: boolean;
   prayer: {
     name: () => string;
     time: string;
   };
 };
 
-function Card({ language, isDark, prayer }: CardProps) {
+const Card: React.FC<CardProps> = ({ prayer }) => {
   const cardStyle: string = `flex flex-col items-center m-4 hover:scale-105 hover:-translate-y-5 
                              transition-all shadow-xl hover:shadow-2xl max-2xl:min-w-0 min-w-[18.75rem]
                              max-lg:min-w-[10.75rem] max-[430px]:min-w-[12.75rem]`;
@@ -120,4 +109,6 @@ function Card({ language, isDark, prayer }: CardProps) {
       <h5 className={timeStyle}>{prayer.time}</h5>
     </div>
   );
-}
+};
+
+export default Main;

@@ -14,18 +14,15 @@ type OptionProps = {
   language: boolean;
 };
 
-export default function Menu({
+import citiesArr from "../data";
+
+const Menu: React.FC<MenuProps> = ({
   isMenuActive,
   setLocation,
   setLanguage,
   language,
   setArLocation,
-}: MenuProps) {
-  const citiesArr: { en: string; ar: string }[] = [
-    { en: "Istanbul", ar: "اسطنبول" },
-    { en: "Ankara", ar: "أنقرة" },
-  ];
-
+}) => {
   const menuPosition: string = language ? "right-0" : "left-0";
   const menuInactivePosition: string = language
     ? "-right-60 scale-0"
@@ -77,15 +74,15 @@ export default function Menu({
       </details>
     </menu>
   );
-}
+};
 
-function Option({
+const Option: React.FC<OptionProps> = ({
   city,
   setLocation,
   setArLocation,
   arCity,
   language,
-}: OptionProps) {
+}) => {
   const optionStyle: string =
     "m-3 p-1 text-[#FFFFFF] dark:text-[#93B1A6] hover:opacity-80 hover:scale-105 transition";
 
@@ -100,4 +97,6 @@ function Option({
       {language ? city : arCity}
     </li>
   );
-}
+};
+
+export default Menu;

@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import PageHead from "./components/PageHead";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 
-export default function Home() {
+const Home: React.FC = () => {
   const [isDark, setIsDark] = useState<boolean>(false);
   const [language, setLanguage] = useState<boolean>(true);
   const [location, setLocation] = useState<string>("Istanbul");
@@ -63,4 +62,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;
