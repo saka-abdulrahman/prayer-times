@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 
 const Home: React.FC = () => {
+  // Initialize state without localStorage
   const [isDark, setIsDark] = useState<boolean>(false);
   const [language, setLanguage] = useState<boolean>(true);
   const [location, setLocation] = useState<string>("Istanbul");
@@ -20,13 +21,15 @@ const Home: React.FC = () => {
         const response = await fetch(
           `http://api.aladhan.com/v1/timingsByCity?country=TR&city=${location}`
         );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
-        setPrayerTimes(data.data); // Update state with API data
+        setPrayerTimes(data.data);
       } catch (error) {
         console.error("Error fetching prayer times:", error);
       }
     };
-    console.log("location is " + location);
     fetchPrayerTimes();
   }, [location]);
 
